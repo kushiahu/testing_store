@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Store{% endblock %}
+
+
+{% block content %}
+<section>
+	<h1 class="h1">Libros en Book Store</h1>
+
+	<div class="container-section">
+	{% for book in books %}
+		<article>
+			<img class="img-fluid" src="{{ book.image.url }}">
+			<p class="book-type">{{ book.get_book_binding_display }}l</p>
+			<a href="{% url 'book:detail' book.slug %}" class="book-name"><p>{{ book.name }}</p></a>
+			<p class="book-author">{{ book.author }}</p>
+			<p class="book-price">$ {{ book.price }}</p>
+			<a href="#" class="btn-add-cart">Añadir a carrito</a>
+		</article>
+	{% endfor %}
+	</div>
+</section>
+
+{% endblock %}

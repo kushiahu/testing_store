@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle libro{% endblock %}
+
+
+{% block content %}
+<section class="section-detail">		
+	<div class="container-detail">
+		<div class="gallery">
+			<img class="img-fluid" src="https://picsum.photos/id/237/300/452">
+		</div>
+		<div class="book-detail">
+			<p class="book-detail-name">Título del libro</p>
+			<p>Author: <span class="book-detail-author">Nombre del author</span> | Editorial: <span class="book-detail-author">Nombre de la editorial</span></p>
+			<p class="book-detail-price">$ 199.99</p>
+			<div class="book-detail-info">
+				<p>Información</p>
+				<p class="book-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.</p>
+			</div>
+			<form>
+				<input type="number" name="cantidad">
+				<button class="btn is-link" type="submit">Añadir a carrito</button>
+			</form>
+		</div>
+	</div>
+
+</section>
+{% endblock %}
