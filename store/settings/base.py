@@ -25,7 +25,9 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = []
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'apls.users',
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -40,6 +42,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'store.urls'
+
+# Users & Authentication
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {
