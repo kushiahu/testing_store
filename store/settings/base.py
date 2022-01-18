@@ -1,9 +1,17 @@
 
 from pathlib import Path
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = '+pp^*0n(u5pueyq$^kz%2g$+nj^rpx8%zivg==8rz9jd&1tac6'
+SECRET_KEY = env('SECRET_KEY')
 
 # Application definition
 DJANGO_APPS = [
@@ -87,6 +95,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [BASE_DIR.parent / "static"]
+
+
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = BASE_DIR.parent / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
