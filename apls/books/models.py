@@ -53,6 +53,9 @@ class Book(models.Model):
 	def __str__(self):
 		return self.name
 
+	def get_editorials(self):
+		return ', '.join([editorial.name for editorial in self.editorials.all()])
+
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.slug = slugify(self.name) + '-' +  str(uuid.uuid4()).split('-')[0]
