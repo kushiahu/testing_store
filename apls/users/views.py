@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 
 
 from apls.users.forms import LoginForm
@@ -17,3 +17,8 @@ def login_view(request):
 		login(request, user)
 		return redirect('/')
 	return render(request, 'users/auth/login.html', {'form': form})
+
+
+def logout_view(request):
+	logout(request)
+	return redirect('book:index')

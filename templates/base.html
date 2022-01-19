@@ -5,16 +5,22 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{% block title %}{% endblock %}</title>
+	{% block css %}{% endblock %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>		
 	<nav>
 		<a href="#">Book Store</a>
 		<div class="nav-menu">
-			<a href="#" class="btn">Carrito (0)</a>
-			<a href="#" class="btn">Libros</a>
-			<a href="#" class="btn">Login</a>
+			<a href="{% url 'cart:detail' %}" class="btn">Carrito ({% if pending_cart.qty_items %}{{ pending_cart.qty_items }}{% else %}0{% endif %})</a>
+			<a href="{% url 'book:index' %}" class="btn">Libros</a>
+			{% if user.is_authenticated %}
+			<a href="#" class="btn">Dashboard</a>
+			<a href="{% url 'users:logout' %}" class="btn is-link">Salir</a>
+			{% else %}	
+			<a href="{% url 'users:login' %}" class="btn">Login</a>
 			<a href="#" class="btn is-link">Registrar</a>
+			{% endif %}
 		</div>
 	</nav>
 

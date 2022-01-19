@@ -4,7 +4,7 @@
 
 
 {% block content %}
-<section class="section-detail">		
+<section class="section-detail">
 	<div class="container-detail">
 		<div class="gallery">
 			<img class="img-fluid" src="{{ book.image.url }}">
@@ -17,12 +17,20 @@
 				<p>Información</p>
 				<p class="book-info">{{ book.description }}</p>
 			</div>
-			<form>
-				<input type="number" name="cantidad">
+			<form action="{% url 'cart:add_item' %}" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="book_id" value="{{ book.id_uuid }}">
+				<input type="number" name="quantity" value="1">
 				<button class="btn is-link" type="submit">Añadir a carrito</button>
 			</form>
 		</div>
 	</div>
-
+	{% if messages %}
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
 </section>
 {% endblock %}

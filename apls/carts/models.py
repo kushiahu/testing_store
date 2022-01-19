@@ -28,6 +28,13 @@ class Cart(models.Model):
 		"""Return owner's cart."""
 		return f'Cart of {self.user if self.user else self.id_uuid}'
 
+	def qty_items(self):
+		return sum([obj.quantity for obj in self.cart_items.all()])
+
+	def update_total(self):
+		self.total = sum([obj.total for obj in self.cart_items.all()])
+		self.save()
+
 
 
 class CartItem(models.Model):
@@ -40,4 +47,8 @@ class CartItem(models.Model):
 
 	def __str__(self):
 		"""Return username."""
-		return f'Qty: {self.quantity} - {self.product.name}'
+		return f'Qty: {self.quantity} - {self.book.name}'
+
+	@property
+	def total(self):
+		return self.price * self.quantity

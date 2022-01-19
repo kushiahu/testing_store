@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.urls import reverse
 from django.template.defaultfilters import slugify
 
 
@@ -55,7 +56,7 @@ class Book(models.Model):
 
 	def get_editorials(self):
 		return ', '.join([editorial.name for editorial in self.editorials.all()])
-
+		
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.slug = slugify(self.name) + '-' +  str(uuid.uuid4()).split('-')[0]

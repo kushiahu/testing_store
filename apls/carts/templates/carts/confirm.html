@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Confirmar pedido | BookStore{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+{% endblock %}
+
+
+{% block content %}
+<div class="section-detail orders">
+  <!-- S H O W   T O T A L -->
+  <div class="display_total">
+    <p class="display_total-title">Resumen de compra</p>
+    <hr class="display_total-hr">
+    <div class="display_values">
+      <p>Productos (2)</p>
+      <p>$ 200</p>
+    </div>
+    <div class="display_values">
+      <p>Envío</p>
+      <p>$ 100</p>
+    </div>
+    <hr class="display_total-hr">
+    <div class="display_values">
+      <p>Total</p>
+      <p>$ 300</p>
+    </div>
+    <div class="mt-24">
+      <a href="#" class="button is-success is-fullwidth">Confirmar</a>      
+    </div>
+  </div>
+  <!-- END: S H O W   T O T A L -->
+
+  <!-- S H I P P I N G   A D D R E S S -->
+  <div class="content_order">
+
+    <p class="address_text">Confirma tu pedido</p>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <!-- Address Detail -->
+          <div class="col-4">
+            <div class="font-weight-bold">
+              <strong>Calle 50 entre 23 y 25</strong>
+            </div>
+            <div class="card-text">
+              C.P.: <strong>24100</strong>
+            </div>
+            <div class="cart-text">
+              {{ shipping_address.get_name }}
+            </div>
+            <div class="cart-text">
+              Referencia: Frente una casa
+            </div>
+            <div class="card-text">
+              <p>Nombre del comprador - (938) 123 4567</p>  
+            </div>
+          </div>
+          <br>
+          <!-- END: Address Detail -->
+          <!-- Card Detail -->
+          <div class="col-4">
+            <div class="font-weight-bold">
+              Método de pago
+            </div>
+            <div class="card-text">
+              Tarjeta terminación 0000
+            </div>
+          </div>
+          <br>
+          <!-- END: Card Detail -->
+          <!-- Promo Detail -->
+          <div class="col-4">
+            <div class="font-weight-bold">
+              Código Promocional
+            </div>
+            <form id="promocode-form" action="#">
+              <input type="text" name="code" value="#" class="form-control" placeholder="código promoción">
+            </form>
+            <!--<div class="text-success" id="promocode-success" style="font-size:14px">
+              Código aplicado exitosamente
+            </div>-->
+          </div>
+          <!-- END: Promo Detail -->
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="button" style="margin-top: 20px">Cancelar</a>
+
+  </div>
+  <!-- END: S H I P P I N G   A D D R E S S -->
+
+</div>
+{% endblock %}

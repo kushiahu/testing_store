@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Carrito | BookStore{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+{% endblock %}
+
+
+{% block content %}
+<section class="section-detail">
+{% if pending_cart %}
+  <table class="table table-full" style="width: 100%; margin-top: 20px;">
+    <thead>
+      <tr>
+        <th><abbr title="Position">#</abbr></th>
+        <th>Libros</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th style="text-align: right;">Total</th>        
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in pending_cart.cart_items.all %}
+      <tr>
+        <th>{{ forloop.counter }}</th>
+        <td>{{ item.book.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>$ {{ item.price|intcomma }}</td>
+        <td style="text-align: right;"><strong>$ {{ item.total|intcomma }}</strong></td>
+      </tr>        
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="cart-total">
+    <p>Total: <strong>$ {{ pending_cart.total|intcomma }}</strong></p>
+  </div>
+
+  <div class="cart-total" style="margin-top: 20px">
+    <a href="#" class="button" style="margin-right: 16px">Vaciar carrito</a>
+    <a href="#" class="button is-info">Realizar pago</a>
+  </div>
+
+{% else %}
+  <div class="empty-cart">
+    <h2>Carrito Vacío</h2>    
+  </div>
+{% endif %}
+</section>
+{% endblock %}
