@@ -16,19 +16,19 @@
     <hr class="display_total-hr">
     <div class="display_values">
       <p>Productos (2)</p>
-      <p>$ 200</p>
+      <p>$ {{ order.subtotal|intcomma }}</p>
     </div>
     <div class="display_values">
       <p>Envío</p>
-      <p>$ 100</p>
+      <p>$ {{ order.shipping_total|intcomma }}</p>
     </div>
     <hr class="display_total-hr">
     <div class="display_values">
       <p>Total</p>
-      <p>$ 300</p>
+      <p>$ {{ order.total|intcomma }}</p>
     </div>
     <div class="mt-24">
-      <a href="#" class="button is-success is-fullwidth">Confirmar</a>      
+      <a href="{{ order.get_absolute_url }}" class="button is-success is-fullwidth">Confirmar</a>      
     </div>
   </div>
   <!-- END: S H O W   T O T A L -->

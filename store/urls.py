@@ -20,6 +20,7 @@ urlpatterns = [
     path('', include('apls.users.urls')),
     path('', include('apls.books.urls')),
     path('', include('apls.carts.urls')),
+    path('', include('apls.orders.urls')),
     path('admin/', admin.site.urls),
 ]
 

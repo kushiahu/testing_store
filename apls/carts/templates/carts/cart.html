@@ -39,7 +39,7 @@
 
   <div class="cart-total" style="margin-top: 20px">
     <a href="#" class="button" style="margin-right: 16px">Vaciar carrito</a>
-    <a href="#" class="button is-info">Realizar pago</a>
+    <a href="{% url 'order:detail' %}" class="button is-info">Realizar pago</a>
   </div>
 
 {% else %}

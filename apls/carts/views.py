@@ -1,6 +1,5 @@
 # Django
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Models
@@ -11,11 +10,6 @@ from apls.carts.models import Cart, CartItem
 # Function Views
 def cart_view(request):
 	return render(request, 'carts/cart.html', {})
-
-
-@login_required
-def order_view(request):
-	return render(request, 'carts/confirm.html', {})
 
 
 def add_item_view(request):

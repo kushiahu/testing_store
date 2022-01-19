@@ -35,6 +35,10 @@ class Cart(models.Model):
 		self.total = sum([obj.total for obj in self.cart_items.all()])
 		self.save()
 
+	def completed(self):
+		self.status = 'CO'
+		self.save()
+
 
 
 class CartItem(models.Model):
